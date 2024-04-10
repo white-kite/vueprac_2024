@@ -3,31 +3,27 @@
 <div>
     <h1>Factorial Page (script setup 사용)</h1>
     <label>수를 입력하세요 : </label> 
-    <input type="number" v-model="number" @keyup.enter="calculateFactorial" /> 
-    <button @click="calculateFactorial">계산</button> <br/>
-    <label>답은? </label> <span class="answer"> {{ answer }}</span>
+    <form @submit.prevent="calculateResult($event)">
+      <input type="number" name="result" />
+      <button type="submit">계산</button> <br />
+    </form>
+    <span class="answer number" v-if="result !== null"> {{ result }}</span>
+    <span class="answer" v-else>계산할 수 없는 값입니다.</span>
 </div>
 </template>
+
 <script setup>
 import { ref } from 'vue';
+import * as Calculate from "../util/Calculate";
 
-const number = ref('');
-const answer = ref('');
-
-function calculateFactorial() {
-    const num = parseInt(number.value);
-    if (isNaN(num)){
-        answer.value = '값을 넣어주세요.'
-        return;
-    }
-    if (num < 0){
-        answer.value = '음수에 대한 팩토리얼은 정의되지 않습니다.'
-        return;
-    }
-    let result = 1;
-    for (let i = 1; i <= num; i++){
-        result *= i;
-    }
-    answer.value = result.toString();
+const result = ref(0);
+function calculateResult(event) {
+    result.value = Calculate.factorial(event.target[0].value)
 }
 </script>
+
+<style scoped>
+.answer.number {
+  font-size: 100px;
+}
+</style>
