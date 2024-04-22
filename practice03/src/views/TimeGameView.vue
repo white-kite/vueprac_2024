@@ -10,7 +10,6 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 const time = ref(0);
-const isRunning = ref(false);
 let timeStatus = null;
 const background = ref('');
 
@@ -31,27 +30,25 @@ const stopTimer = () => {
     clearInterval(timeStatus); // 타이머 정지
     timeStatus = null;
 
-    setTimeout(() => { // 타이머 멈추기 후 잠시 후 배경색 변경
+    setTimeout(() => {
       if (Math.abs(time.value - 7) < 0.1) {
         background.value = 'green-background'; // 7초 맞춤
       } else {
         background.value = 'red-background'; // 7초 못 맞춤
       }
-    }, 100); // 0.1초 후 배경색 변경
+    }, 0);
   }
 };
 
 
 // 타이머 시작 멈춤 함수
 const toggleTimer = () => {
-  if (isRunning.value) {
+  if (timeStatus) {
     stopTimer(); // 멈춤
   } else {
     startTimer(); // 시작
   }
-  isRunning.value = !isRunning.value; // 상태 반전
 };
-
 
 const timer = computed(() => {
   return time.value.toFixed(1); // toFixed(n) 소수점 n자리까지 표시
