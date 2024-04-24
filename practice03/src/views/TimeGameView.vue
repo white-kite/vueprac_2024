@@ -1,62 +1,51 @@
 <template>
-  <div :class="background">
+  <div :style="{backgroundColor}">
     <h1>7초를 맞추세요.</h1>
     <label>spacebar로 조작하세요!</label><br/>
-    <span class="time number">{{ timer }}</span>
+    <span class="time">{{ timer }}</span>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 
-const time = ref(0);
-let timeStatus = null;
-const background = ref('');
+let intervalRef = null;
 
+const time = ref(0);
+const backgroundColor = ref('');
+
+const timer = computed(() => time.value?.toFixed(1)); // toFixed(n) 소수점 n자리까지 표시
+
+const handleSpacebar = (event) => {
+  if (event.code === 'Space') {
+    if (intervalRef) {
+      stopTimer(); // 멈춤
+    } else {
+      startTimer(); // 시작
+    }
+  }
+};
 
 // 시작
 const startTimer = () => {
-  timeStatus = setInterval(() => {
+  intervalRef = setInterval(() => {
     time.value += 0.1; // 소수점 첫째 자리부터 증가
-    if (time.value >= 15) {
+    if (time.value >= 10) {
       time.value = 0; // 최대 15까지 증가
+      stopTimer();
     }
   }, 100); // 0.1초마다 증가
 };
 
 // 멈춤
 const stopTimer = () => {
-  if (timeStatus) {
-    clearInterval(timeStatus); // 타이머 정지
-    timeStatus = null;
-
-    setTimeout(() => {
-      if (Math.abs(time.value - 7) < 0.1) {
-        background.value = 'green-background'; // 7초 맞춤
-      } else {
-        background.value = 'red-background'; // 7초 못 맞춤
-      }
-    }, 0);
-  }
-};
-
-
-// 타이머 시작 멈춤 함수
-const toggleTimer = () => {
-  if (timeStatus) {
-    stopTimer(); // 멈춤
-  } else {
-    startTimer(); // 시작
-  }
-};
-
-const timer = computed(() => {
-  return time.value.toFixed(1); // toFixed(n) 소수점 n자리까지 표시
-});
-
-const handleSpacebar = (event) => {
-  if (event.code === 'Space') {
-    toggleTimer(); // 스페이스바 누를 때 타이머 시작/멈춤
+  if (intervalRef) {
+    clearInterval(intervalRef); // 타이머 정지
+    intervalRef = null;
+    
+    if (time.value > 0) {
+      backgroundColor.value = Math.abs(time.value - 7) < 0.1 ? 'green' : 'red';
+    }
   }
 };
 
@@ -73,15 +62,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.green-background {
-  background-color: green; /* 7초 맞췄을 때*/
-}
-
-.red-background {
-  background-color: red; /* 7초 맞추지 못했을 때*/
-}
-
-.time.number {
+.time {
   font-size: 100px;
 }
 </style>
