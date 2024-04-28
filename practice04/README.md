@@ -1,4 +1,5 @@
-# practice02
+# practice04
+VUE CLI 적용함
 
 ## Project setup
 ```
