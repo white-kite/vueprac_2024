@@ -1,11 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import Home from '../views/HomeView.vue';
 import TimeGame from '../views/TimeGameView.vue';
 import Search from '../views/SearchView.vue';
 import FactorialSetup from '../views/FactorialSetup.vue';
 
+import TestSetup from '../views/testSetup.vue';
+import TestScript from '../views/testScript.vue';
+
 const routes = [
   {
     path: '/',
+    name: 'Home',
+    component: Home,
+  },
+  {
+    path: '/timegame',
     name: 'TimeView',
     component: TimeGame,
   },
@@ -18,6 +27,16 @@ const routes = [
     path: '/factorialSetup',
     name: 'FactorialSetup',
     component: FactorialSetup,
+  },
+  {
+    path: '/testSetup',
+    name: 'testSetup',
+    component: TestSetup,
+  },
+  {
+    path: '/testScript',
+    name: 'testScript',
+    component: TestScript,
   }
 ];
 

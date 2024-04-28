@@ -2,8 +2,8 @@
     <div>
         <h1>Search Page (script setup 사용)</h1>
         <label>입력하세요 : </label> 
-        <input type="text" v-model="searchQuery" name="searchInput" />
-
+        <!-- <input type="text" v-model="searchQuery" name="searchInput" /> -->
+        <v-text-field type="text" v-model="searchQuery" name="searchInput" />
         <div class="memo" v-html="highlightedText"></div>
     </div>
 </template>
