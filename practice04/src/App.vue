@@ -1,30 +1,18 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">TimeGame</router-link> |
-      <router-link to="/search">Search</router-link> |
-      <router-link to="/factorialSetup">Factorial2</router-link>
-    </nav>
-    <router-view/>
-  </div>
-
-
+  <v-app>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
 
 export default {
   name: 'App',
+
+  data: () => ({
+    //
+  }),
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
