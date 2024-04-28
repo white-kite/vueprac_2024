@@ -7,7 +7,7 @@
       <v-layout>
         <v-app-bar color="primary" prominent>
           <v-app-bar-nav-icon @click.stop="toggleDrawer"></v-app-bar-nav-icon>
-          <v-toolbar-title>vuePrac's applying vuecli</v-toolbar-title>
+          <v-toolbar-title>vuePrac's applying vite</v-toolbar-title>
           <v-spacer></v-spacer>
           <!-- 반응형 -->
           <template v-if="$vuetify.display.mdAndUp">
