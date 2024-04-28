@@ -7,7 +7,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run serve >> vite를 설치하면서 ** npm run dev **로 변경
 ```
 
 ### Compiles and minifies for production
