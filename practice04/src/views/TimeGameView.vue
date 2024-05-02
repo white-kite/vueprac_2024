@@ -2,7 +2,7 @@
   <div :style="{backgroundColor}">
     <h1>7초를 맞추세요.</h1>
     <label>spacebar로 조작하세요!</label><br/>
-    <span class="time">{{ timer }}</span>
+    <span class="text-h1">{{ timer }}</span>
   </div>
 </template>
 
