@@ -1,10 +1,11 @@
 <template>
     <div>
         <h1>Search Page (script setup 사용)</h1>
-        <label>입력하세요 : </label> 
         <!-- <input type="text" v-model="searchQuery" name="searchInput" /> -->
-        <v-text-field type="text" v-model="searchQuery" name="searchInput" />
-        <div class="memo" v-html="highlightedText"></div>
+        <v-text-field type="text" v-model="searchQuery" name="searchInput" placeholder="스펠링을 입력하세요" class="w-25 mx-auto" />
+        <v-card flat class="pa-5">
+            <div class="memo mx-auto w-50" v-html="highlightedText"></div>
+        </v-card>
     </div>
 </template>
 

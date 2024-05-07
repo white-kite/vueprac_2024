@@ -14,15 +14,13 @@
         <h1 class="display-2 font-weight-bold mb-3">
           Welcome to the Vuetify 3 Beta
         </h1>
+        <h2 class="display-2 font-weight-bold mb-3">
+          안녕하세요! vuecli 적용 프로젝트입니다!
+        </h2>
 
 
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
+        <p class="subheading font-weight-bold">
+          2024.04 ~ ing
         </p>
       </v-col>
 
@@ -40,7 +38,7 @@
             :key="i"
             :href="next.href"
             class="subheading mx-3"
-            target="_blank"
+            target="_self"
           >
             {{ next.text }}
           </a>
@@ -52,7 +50,7 @@
         cols="12"
       >
         <h2 class="headline font-weight-bold mb-5">
-          Important Links
+          Important Link
         </h2>
 
         <v-row justify="center">
@@ -68,26 +66,6 @@
         </v-row>
       </v-col>
 
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-5">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
-      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -98,25 +76,12 @@ export default {
   name: 'HelloWorld',
 
   data: () => ({
-    ecosystem: [
-      {
-        text: 'vuetify-loader',
-        href: 'https://github.com/vuetifyjs/vuetify-loader/tree/next',
-      },
-      {
-        text: 'github',
-        href: 'https://github.com/vuetifyjs/vuetify/tree/next',
-      },
-      {
-        text: 'awesome-vuetify',
-        href: 'https://github.com/vuetifyjs/awesome-vuetify',
-      },
-    ],
     importantLinks: [
       {
-        text: 'Chat',
-        href: 'https://community.vuetifyjs.com',
+        text: 'Github',
+        href: 'https://github.com/white-kite/vueprac_2024',
       },
+      /*
       {
         text: 'Made with Vuetify',
         href: 'https://madewithvuejs.com/vuetify',
@@ -129,19 +94,24 @@ export default {
         text: 'Articles',
         href: 'https://medium.com/vuetify',
       },
+      */
     ],
     whatsNext: [
       {
-        text: 'Explore components',
-        href: 'https://vuetifyjs.com',
+        text: '1st week',
+        href: '/factorialSetup',
       },
       {
-        text: 'Roadmap',
-        href: 'https://vuetifyjs.com/introduction/roadmap/',
+        text: '2nd week',
+        href: '/search',
       },
       {
-        text: 'Frequently Asked Questions',
-        href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
+        text: '3rd week',
+        href: '/timegame',
+      },
+      {
+        text: '4th week : css',
+        href: '/',
       },
     ],
   }),

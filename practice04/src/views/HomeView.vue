@@ -1,5 +1,4 @@
 <template>
-  vuecli 적용 프로젝트입니다.
   <HelloWorld />
 </template>
 

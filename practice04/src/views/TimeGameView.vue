@@ -60,9 +60,3 @@ onUnmounted(() => {
   window.removeEventListener('keydown', handleSpacebar); // 컴포넌트 해제 시 리스너 제거
 });
 </script>
-
-<style scoped>
-.time {
-  font-size: 100px;
-}
-</style>

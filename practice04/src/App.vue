@@ -25,7 +25,7 @@
         <!-- 컨텐츠 영역 -->
         <v-main>
           <v-card flat class="pa-5">
-            <router-view/>
+            <router-view class="text-xl-center" />
           </v-card>
         </v-main>
       </v-layout>
