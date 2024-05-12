@@ -25,7 +25,9 @@
         <!-- 컨텐츠 영역 -->
         <v-main>
           <v-card flat class="pa-5">
-            <router-view class="text-xl-center" />
+            <div class="align-center text-xl-center">
+              <router-view/>
+            </div>
           </v-card>
         </v-main>
       </v-layout>
@@ -41,6 +43,7 @@ const items = [ // 라우팅 경로 설정
   { title: 'FactorialSetup', path: '/factorialSetup' },
   { title: 'Search', path: '/search' },
   { title: 'TimeGame', path: '/timeGame' }, 
+  { title: 'CssPrac', path: '/cssPrac' }, 
 ];
 
 // 드로어 토글

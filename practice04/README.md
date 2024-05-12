@@ -1,5 +1,7 @@
 # practice04
 VUE CLI 적용함
+vue add vuetify
+npm install @fortawesome/fontawesome-free
 
 ## Project setup
 ```

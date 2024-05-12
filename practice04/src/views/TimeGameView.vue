@@ -1,8 +1,16 @@
 <template>
   <div :style="{backgroundColor}">
-    <h1>7초를 맞추세요.</h1>
-    <label>spacebar로 조작하세요!</label><br/>
-    <span class="text-h1">{{ timer }}</span>
+    <v-col class="text-center align-center">
+      <v-row class="text-center align-center">
+        <h1>7초를 맞추세요.</h1>
+      </v-row>
+      <v-row>
+        <label>spacebar로 조작하세요!</label>
+      </v-row>
+      <v-row>
+        <span class="text-h1">{{ timer }}</span>
+      </v-row>
+    </v-col>
   </div>
 </template>
 
