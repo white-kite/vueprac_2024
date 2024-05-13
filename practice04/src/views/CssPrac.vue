@@ -11,13 +11,17 @@
 <script setup>
 
 </script>
-<style>
+<style scoped>
 .card{
-    border-style: inherit;
-    border-radius: 5px; /* 혹시 rem 으로..? */
-    padding: 2rem;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: gainsboro;
+    padding: 20px;
+    margin: auto;
     width:300px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    align-items: center;
 }
 
 h4{
@@ -30,6 +34,7 @@ label {
     margin-bottom: 15px;
     color: gray;
     font-weight: 400;
+    text-align: left;
 }
 
 i{
@@ -40,6 +45,7 @@ i{
 ul {
     padding-left: 0; /* 왼쪽 패딩 제거 */
     list-style-type: none; /* 리스트 스타일 제거 */
+    text-align: left;
 }
 
 li {

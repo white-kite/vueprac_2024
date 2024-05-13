@@ -110,8 +110,12 @@ export default {
         href: '/timegame',
       },
       {
-        text: '4th week : css',
+        text: '4th week : css start',
         href: '/',
+      },
+      {
+        text: '5th week',
+        href: '/cssPrac',
       },
     ],
   }),
