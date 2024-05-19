@@ -1,7 +1,8 @@
 <template>
-    <button @click="showCard" class="toggleBtn">toggle</button>
-    <div :class="{ 'backdrop': isShown }">
-        <div class="card" v-if="isShown">
+    <button @click="toggleCard" class="toggleBtn">toggle</button>
+    <!-- <div :class="{ 'backdrop': isShown }"> vue 동적 클래스 바인딩을 안쓰고 -->
+    <div class="backdrop" @click="toggleCard">
+        <div class="card" v-if="isShown" @click.stop="preventClose">
             <label>REPORTS</label>
             <ul>
                 <li>
@@ -25,31 +26,39 @@ import {ref} from 'vue'
 
 const isShown = ref(false);
 
-const showCard = () => isShown.value = !isShown.value;
+const toggleCard = () => {
+    const backdrop = document.querySelector('.backdrop');
+    isShown.value = !isShown.value;
+    backdrop.style.display = isShown.value? 'block' : 'none'; 
+}
+
+const preventClose = (event) => {
+    event.stopPropagation();  // 이벤트 버블링을 막아 card 클릭 시 닫히지 않도록 함
+}
 
 </script>
 <style>
 .toggleBtn{
-    position: relative;
     padding: 10px;
     border: 1px solid;
     border-radius: 5px;
-    z-index: 30; /* 가장 위에 위치 */
     background: white;
 }
 
 .backdrop {
+    display: none; /* vue 동적 클래스 바인딩 안 쓸 시 추가 */
     position: fixed; /* 화면 전체에 고정 */
+    z-index: 10;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* 반투명 회색 */
-    z-index: 10; /* 다른 요소들 위에 위치 */
 }
 
 .card {
     /* position: relative; */
+    z-index: 20; /* backdrop 위에 위치 */
     width: 300px;
     padding: 15px 0 10px;
     margin: 150px auto;
@@ -57,7 +66,6 @@ const showCard = () => isShown.value = !isShown.value;
     border-radius: 5px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     background: white; /* 카드 배경색 설정 */
-    z-index: 20; /* backdrop 위에 위치 */
 }
 
 .card > label {
