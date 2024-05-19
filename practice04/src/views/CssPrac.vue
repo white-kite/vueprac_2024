@@ -1,21 +1,23 @@
 <template>
-    <button @click="showCard">toggle</button>
-    <div class="card" v-if="isShown">
-        <label>REPORTS</label>
-        <ul>
-            <li>
-                <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                Real-Time
-            </li>
-            <li>
-                <span class="icon"><i class="fas fa-user"></i></span>
-                Audience
-            </li>
-            <li>
-                <span class="icon"><i class="fa-solid fa-flag"></i></span>
-                    Conversions
+    <button @click="showCard" class="toggleBtn">toggle</button>
+    <div :class="{ 'backdrop': isShown }">
+        <div class="card" v-if="isShown">
+            <label>REPORTS</label>
+            <ul>
+                <li>
+                    <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                    Real-Time
                 </li>
-        </ul>
+                <li>
+                    <span class="icon"><i class="fas fa-user"></i></span>
+                    Audience
+                </li>
+                <li>
+                    <span class="icon"><i class="fa-solid fa-flag"></i></span>
+                        Conversions
+                    </li>
+            </ul>
+        </div>
     </div>
 </template>
 <script setup>
@@ -27,13 +29,35 @@ const showCard = () => isShown.value = !isShown.value;
 
 </script>
 <style>
+.toggleBtn{
+    position: relative;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    z-index: 30; /* 가장 위에 위치 */
+    background: white;
+}
+
+.backdrop {
+    position: fixed; /* 화면 전체에 고정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 반투명 회색 */
+    z-index: 10; /* 다른 요소들 위에 위치 */
+}
+
 .card {
+    /* position: relative; */
     width: 300px;
     padding: 15px 0 10px;
-    margin: auto;
+    margin: 150px auto;
     border: 1px solid gainsboro;
     border-radius: 5px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    background: white; /* 카드 배경색 설정 */
+    z-index: 20; /* backdrop 위에 위치 */
 }
 
 .card > label {
