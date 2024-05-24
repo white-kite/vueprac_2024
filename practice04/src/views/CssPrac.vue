@@ -1,8 +1,8 @@
 <template>
     <button @click="toggleCard" class="toggleBtn">toggle</button>
     <!-- <div :class="{ 'backdrop': isShown }"> vue 동적 클래스 바인딩을 안쓰고 -->
-    <div class="backdrop" @click="toggleCard">
-        <div class="card" v-if="isShown" @click.stop="preventClose">
+    <div class="backdrop" @click="toggleCard" :style="{ display: isShown? 'flex' : 'none' }">
+        <div class="card" @click.stop="preventClose">
             <label>REPORTS</label>
             <ul>
                 <li>
@@ -27,9 +27,7 @@ import {ref} from 'vue'
 const isShown = ref(false);
 
 const toggleCard = () => {
-    const backdrop = document.querySelector('.backdrop');
     isShown.value = !isShown.value;
-    backdrop.style.display = isShown.value? 'block' : 'none'; 
 }
 
 const preventClose = (event) => {
@@ -54,6 +52,8 @@ const preventClose = (event) => {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* 반투명 회색 */
+    align-items: center;
+    justify-content: center;
 }
 
 .card {
@@ -61,7 +61,6 @@ const preventClose = (event) => {
     z-index: 20; /* backdrop 위에 위치 */
     width: 300px;
     padding: 15px 0 10px;
-    margin: 150px auto;
     border: 1px solid gainsboro;
     border-radius: 5px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
